@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Matrix Operations Tool</title>
+</head>
+
+<body>
+
+    <h1>Matrix Operations Tool</h1>
+
+    <form action="/matrix" method="POST">
+
+        <h2>Matrix A</h2>
+
+        <table>
+            {% for i in range(rows1) %}
+            <tr>
+                {% for j in range(cols1) %}
+                <td>
+                    <input type="number" name="m1_{{ i }}_{{ j }}"
+                        value="{{ matrix1[i][j] if matrix1 else '' }}" required>
+                </td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+
+        <br>
+
+        <h2>Matrix B</h2>
+
+        <table>
+            {% for i in range(rows2) %}
+            <tr>
+                {% for j in range(cols2) %}
+                <td>
+                    <input type="number" name="m2_{{ i }}_{{ j }}"
+                        value="{{ matrix2[i][j] if matrix2 else '' }}" required>
+                </td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+
+        <br>
+
+        <button name="operation" value="add">
+            Addition
+        </button>
+
+        <button name="operation" value="subtract">
+            Subtraction
+        </button>
+
+        <button name="operation" value="multiply">
+            Multiplication
+        </button>
+
+        <button name="operation" value="transpose1">
+            Transpose A
+        </button>
+
+        <button name="operation" value="transpose2">
+            Transpose B
+        </button>
+
+        <button name="operation" value="det1">
+            Determinant A
+        </button>
+
+        <button name="operation" value="det2">
+            Determinant B
+        </button>
+
+    </form>
+
+    <hr>
+
+    {% if result is not none %}
+
+    <h2>Result</h2>
+
+        {% if result is number %}
+
+        <p>{{ result }}</p>
+
+        {% else %}
+
+        <table border="1" cellpadding="8">
+
+            {% for row in result %}
+            <tr>
+                {% for value in row %}
+                <td>{{ value }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+
+        </table>
+
+        {% endif %}
+
+    {% endif %}
+
+    {% if error %}
+    <h3>{{ error }}</h3>
+    {% endif %}
+
+</body>
+
+</html>
