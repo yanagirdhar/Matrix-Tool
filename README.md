@@ -24,7 +24,7 @@ A simple Flask web application that performs basic matrix operations using the N
 1. Clone the repository.
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/yanagirdhar/Matrix-Tool.git
 ```
 
 2. Install the required packages.
